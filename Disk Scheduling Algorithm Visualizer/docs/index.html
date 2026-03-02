@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talensync OS Simulation Engine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="title">Talensync <span class="gradient-text">OS Engine</span></h1>
+            <p class="subtitle">A powerful, interactive, and comprehensive Python-based GUI suite designed to visualize, analyze, and benchmark Operating System concepts.</p>
+            <div class="hero-actions">
+                <a href="https://github.com/RishvinReddy" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-github"></i> View Repository
+                </a>
+                <a href="#features" class="btn btn-secondary">Explore Modules</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="glass-panel main-panel">
+                <div class="panel-header">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                </div>
+                <!-- Mockup of the app dashboard -->
+                <div class="panel-body">
+                    <div class="mock-sidebar">
+                        <div class="mock-nav active"></div>
+                        <div class="mock-nav"></div>
+                        <div class="mock-nav"></div>
+                        <div class="mock-nav"></div>
+                    </div>
+                    <div class="mock-content">
+                        <div class="mock-title"></div>
+                        <div class="mock-kpi-row">
+                            <div class="mock-kpi"></div>
+                            <div class="mock-kpi"></div>
+                            <div class="mock-kpi"></div>
+                        </div>
+                        <div class="mock-chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features-section">
+        <h2 class="section-title">Explore the <span class="gradient-text">Modules</span></h2>
+        <p class="section-desc">More than just disk scheduling—a fully integrated toolkit mapping out core system architectures.</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+                <h3>OS Architecture Dashboard</h3>
+                <p>A central, real-time command center monitoring the overarching systems, logs, and processes of your simulations.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-icon"><i class="fas fa-hdd"></i></div>
+                <h3>Disk I/O Management</h3>
+                <p>Visualize disk head movements! Simulates <strong>FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK</strong> with dynamic charts and metrics.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-icon"><i class="fas fa-microchip"></i></div>
+                <h3>CPU Scheduling</h3>
+                <p>Understand how time is allocated across processes. Test algorithms and examine turnaround times graphically.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-icon"><i class="fas fa-ban"></i></div>
+                <h3>Deadlocks & Banker's Algo</h3>
+                <p>Evaluate safe and unsafe states interacting directly with Resource Allocation Graphs and step-by-step matrix resolutions.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-icon"><i class="fas fa-lock"></i></div>
+                <h3>Process Sync / Mutexes</h3>
+                <p>A specialized terminal simulating safe concurrency versus race conditions across multithreaded operations.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-icon"><i class="fas fa-folder-open"></i></div>
+                <h3>File System Allocation</h3>
+                <p>Compare Contiguous, Linked, and Indexed block allocation strategies directly mapped onto physical storage abstraction.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="card-icon"><i class="fas fa-sync-alt"></i></div>
+                <h3>Process Lifecycle States</h3>
+                <p>Observe the transition lifecycle from New, Ready, Running, Waiting, to Terminated states live.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="card-icon"><i class="fas fa-industry"></i></div>
+                <h3>Smart Factory Context</h3>
+                <p>Apply foundational OS theories like deadlock prevention directly to a simulated real-world factory hardware pipeline.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-stack-section">
+        <h2 class="section-title">Powered By</h2>
+        <div class="tech-container">
+            <div class="tech-pill"><i class="fab fa-python"></i> Python 3.x</div>
+            <div class="tech-pill"><i class="fas fa-paint-brush"></i> CustomTkinter</div>
+            <div class="tech-pill"><i class="fas fa-chart-line"></i> Matplotlib</div>
+            <div class="tech-pill"><i class="fas fa-project-diagram"></i> NetworkX</div>
+            <div class="tech-pill"><i class="fas fa-file-pdf"></i> ReportLab</div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Designed and Built by <strong>Rishvin Reddy</strong></p>
+            <p class="footer-sub">Operating Systems Project &bull; Sem 4</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

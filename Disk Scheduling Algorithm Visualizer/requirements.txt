@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+=======
+customtkinter
+>>>>>>> 71fd2fa (Initial commit for Talensync OS Simulation Engine)
+matplotlib
