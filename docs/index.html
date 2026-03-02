@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talensync OS Simulation Engine</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for Visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="background-effects">
         <div class="blob blob-1"></div>
@@ -16,12 +21,18 @@
         <div class="blob blob-3"></div>
     </div>
 
+    <!-- HERO SECTION -->
     <header class="hero">
         <div class="hero-content">
             <h1 class="title">Talensync <span class="gradient-text">OS Engine</span></h1>
-            <p class="subtitle">A powerful, interactive, and comprehensive Python-based GUI suite designed to visualize, analyze, and benchmark Operating System concepts.</p>
+            <p class="subtitle">A premium, responsive simulation dashboard to visualize and interact with Operating
+                System algorithms in real-time.</p>
             <div class="hero-actions">
-                <a href="https://github.com/RishvinReddy" class="btn btn-primary" target="_blank">
+                <a href="#simulations" class="btn btn-primary"
+                    style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)); border: none; font-weight: 700;">
+                    <i class="fas fa-play"></i> Launch Web Simulation
+                </a>
+                <a href="https://github.com/RishvinReddy" class="btn btn-secondary" target="_blank">
                     <i class="fab fa-github"></i> View Repository
                 </a>
                 <a href="#features" class="btn btn-secondary">Explore Modules</a>
@@ -56,59 +67,589 @@
 
     <section id="features" class="features-section">
         <h2 class="section-title">Explore the <span class="gradient-text">Modules</span></h2>
-        <p class="section-desc">More than just disk scheduling—a fully integrated toolkit mapping out core system architectures.</p>
-        
+        <p class="section-desc">More than just disk scheduling—a fully integrated toolkit mapping out core system
+            architectures.</p>
+
         <div class="features-grid">
             <div class="feature-card">
                 <div class="card-icon"><i class="fas fa-layer-group"></i></div>
                 <h3>OS Architecture Dashboard</h3>
-                <p>A central, real-time command center monitoring the overarching systems, logs, and processes of your simulations.</p>
+                <p>A central, real-time command center monitoring the overarching systems, logs, and processes of
+                    your
+                    simulations.</p>
             </div>
-            
+
             <div class="feature-card">
                 <div class="card-icon"><i class="fas fa-hdd"></i></div>
                 <h3>Disk I/O Management</h3>
-                <p>Visualize disk head movements! Simulates <strong>FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK</strong> with dynamic charts and metrics.</p>
+                <p>Visualize disk head movements! Simulates <strong>FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK</strong>
+                    with
+                    dynamic charts and metrics.</p>
             </div>
-            
+
             <div class="feature-card">
                 <div class="card-icon"><i class="fas fa-microchip"></i></div>
                 <h3>CPU Scheduling</h3>
-                <p>Understand how time is allocated across processes. Test algorithms and examine turnaround times graphically.</p>
+                <p>Understand how time is allocated across processes. Test algorithms and examine turnaround times
+                    graphically.</p>
             </div>
-            
+
             <div class="feature-card">
                 <div class="card-icon"><i class="fas fa-ban"></i></div>
                 <h3>Deadlocks & Banker's Algo</h3>
-                <p>Evaluate safe and unsafe states interacting directly with Resource Allocation Graphs and step-by-step matrix resolutions.</p>
+                <p>Evaluate safe and unsafe states interacting directly with Resource Allocation Graphs and
+                    step-by-step
+                    matrix resolutions.</p>
             </div>
-            
+
             <div class="feature-card">
                 <div class="card-icon"><i class="fas fa-lock"></i></div>
                 <h3>Process Sync / Mutexes</h3>
-                <p>A specialized terminal simulating safe concurrency versus race conditions across multithreaded operations.</p>
+                <p>A specialized terminal simulating safe concurrency versus race conditions across multithreaded
+                    operations.</p>
             </div>
-            
+
             <div class="feature-card">
                 <div class="card-icon"><i class="fas fa-folder-open"></i></div>
                 <h3>File System Allocation</h3>
-                <p>Compare Contiguous, Linked, and Indexed block allocation strategies directly mapped onto physical storage abstraction.</p>
+                <p>Compare Contiguous, Linked, and Indexed block allocation strategies directly mapped onto physical
+                    storage abstraction.</p>
             </div>
 
             <div class="feature-card">
                 <div class="card-icon"><i class="fas fa-sync-alt"></i></div>
                 <h3>Process Lifecycle States</h3>
-                <p>Observe the transition lifecycle from New, Ready, Running, Waiting, to Terminated states live.</p>
+                <p>Observe the transition lifecycle from New, Ready, Running, Waiting, to Terminated states live.
+                </p>
             </div>
 
             <div class="feature-card">
                 <div class="card-icon"><i class="fas fa-industry"></i></div>
                 <h3>Smart Factory Context</h3>
-                <p>Apply foundational OS theories like deadlock prevention directly to a simulated real-world factory hardware pipeline.</p>
+                <p>Apply foundational OS theories like deadlock prevention directly to a simulated real-world
+                    factory
+                    hardware pipeline.</p>
             </div>
         </div>
     </section>
 
+    <!-- SIMULATIONS SECTION -->
+    <section id="simulations" class="features-section" style="padding-top: 2rem; max-width: 1400px;">
+        <h2 class="section-title">Interactive Web <span class="gradient-text">Simulations</span></h2>
+        <p class="section-desc" style="margin-bottom: 2rem;">Run real-time Operating System algorithms directly in
+            your
+            browser.</p>
+
+        <!-- Tabs Navigation -->
+        <div class="simulator-nav">
+            <button class="sim-tab-btn active" onclick="switchSimTab('disk')">
+                <i class="fas fa-hdd"></i> Disk Scheduling
+            </button>
+            <button class="sim-tab-btn" onclick="switchSimTab('cpu')">
+                <i class="fas fa-microchip"></i> CPU Scheduling
+            </button>
+            <button class="sim-tab-btn" onclick="switchSimTab('memory')">
+                <i class="fas fa-memory"></i> Memory Allocation
+            </button>
+            <button class="sim-tab-btn" onclick="switchSimTab('sync')">
+                <i class="fas fa-handshake"></i> Process Sync
+            </button>
+            <button class="sim-tab-btn" onclick="switchSimTab('filesystem')">
+                <i class="fas fa-folder-open"></i> File Systems
+            </button>
+        </div>
+
+        <!-- SIMULATION MODULES WRAPPER -->
+        <div class="sim-modules-container">
+
+            <!-- DISK SCHEDULING MODULE -->
+            <div id="disk-module" class="sim-module-section active">
+                <div class="simulator-layout">
+                    <!-- Controls -->
+                    <div class="sim-controls">
+                        <h3><i class="fas fa-hdd" style="color: var(--accent-blue);"></i> Disk Parameters</h3>
+                        <div class="form-group">
+                            <label for="algorithm">Scheduling Algorithm</label>
+                            <select id="algorithm" class="form-control">
+                                <option value="fcfs">FCFS (First Come First Serve)</option>
+                                <option value="sstf">SSTF (Shortest Seek Time First)</option>
+                                <option value="scan">SCAN (Elevator)</option>
+                                <option value="cscan">C-SCAN (Circular SCAN)</option>
+                                <option value="look">LOOK</option>
+                                <option value="clook">C-LOOK</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="queue">Request Queue (comma-separated)</label>
+                            <input type="text" id="queue" class="form-control" value="82, 170, 43, 140, 24, 16, 190">
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <div class="form-group" style="flex: 1;">
+                                <label for="head">Initial Head</label>
+                                <input type="number" id="head" class="form-control" value="50">
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label for="max-cylinders">Max Cylinders</label>
+                                <input type="number" id="max-cylinders" class="form-control" value="200">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Direction (for SCAN/LOOK)</label>
+                            <select id="direction" class="form-control">
+                                <option value="high">Towards High</option>
+                                <option value="low">Towards Low</option>
+                            </select>
+                        </div>
+                        <button class="btn-simulate" onclick="runSimulation()">
+                            <i class="fas fa-play"></i> Run Disk Simulation
+                        </button>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value" id="total-seek">-</div>
+                                <div class="metric-label">Total Seek Time</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="avg-seek">-</div>
+                                <div class="metric-label">Avg Seek Time</div>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 2rem;">
+                            <label>Seek Sequence Trace:</label>
+                            <div id="seek-sequence" class="sequence-box">-</div>
+                        </div>
+                    </div>
+                    <!-- Visualization -->
+                    <div class="sim-visualization">
+                        <h3>Disk Head Movement Path</h3>
+                        <p class="desc">Visualizing the path of the disk head across cylinders to serve requests
+                            over time.</p>
+                        <div class="chart-container">
+                            <canvas id="diskChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CPU SCHEDULING MODULE -->
+            <div id="cpu-module" class="sim-module-section">
+                <div class="simulator-layout">
+                    <!-- Controls -->
+                    <div class="sim-controls">
+                        <h3><i class="fas fa-microchip" style="color: var(--accent-purple);"></i> CPU Parameters
+                        </h3>
+                        <div class="form-group">
+                            <label for="cpu-algorithm">Scheduling Algorithm</label>
+                            <select id="cpu-algorithm" class="form-control" onchange="toggleTimeQuantum()">
+                                <option value="fcfs">FCFS (First Come First Serve)</option>
+                                <option value="sjf">SJF (Shortest Job First - Non-Preemptive)</option>
+                                <option value="srtf">SRTF (Shortest Remaining Time First)</option>
+                                <option value="priority">Priority Scheduling (Non-Preemptive)</option>
+                                <option value="rr">Round Robin</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="tq-group" style="display: none;">
+                            <label for="time-quantum">Time Quantum</label>
+                            <input type="number" id="time-quantum" class="form-control" value="2" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom: 1rem;">Processes Setup</label>
+                            <div
+                                style="overflow-x: auto; background: rgba(255,255,255,0.4); border-radius: 8px; border: 1px solid rgba(0,0,0,0.05); padding: 0.5rem;">
+                                <table class="process-table" id="process-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Arrival</th>
+                                            <th>Burst</th>
+                                            <th>Priority</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="process-tbody">
+                                        <!-- Populated by JS -->
+                                    </tbody>
+                                </table>
+                                <button class="btn-add-process" onclick="addProcessRow()">
+                                    <i class="fas fa-plus"></i> Add Process
+                                </button>
+                            </div>
+                        </div>
+                        <button class="btn-simulate" onclick="runCPUSimulation()"
+                            style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));">
+                            <i class="fas fa-play"></i> Run CPU Simulation
+                        </button>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value" id="avg-waiting">-</div>
+                                <div class="metric-label">Avg Waiting Time</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="avg-turnaround">-</div>
+                                <div class="metric-label">Avg Turnaround Time</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Visualization -->
+                    <div class="sim-visualization">
+                        <h3>CPU Execution & Timeline</h3>
+                        <p class="desc">Interactive Gantt chart visualizing processor time allocation across jobs.
+                        </p>
+
+                        <div class="gantt-chart-container"
+                            style="background: rgba(255,255,255,0.4); border: 1px solid var(--glass-border); padding: 2rem; border-radius: 12px;">
+                            <h4
+                                style="margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase;">
+                                Gantt Chart</h4>
+                            <div class="gantt-chart" id="gantt-chart">
+                                <!-- Populated by JS -->
+                                <div
+                                    style="padding: 2rem; text-align: center; color: var(--text-secondary); width: 100%;">
+                                    Run simulation to generate Gantt Chart
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 2.5rem;">
+                            <h4>Process Execution Details</h4>
+                            <div
+                                style="overflow-x: auto; margin-top: 1rem; background: rgba(255,255,255,0.4); border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); padding: 1rem;">
+                                <table class="process-table" id="results-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Process</th>
+                                            <th>Arrival</th>
+                                            <th>Burst</th>
+                                            <th>Completion</th>
+                                            <th>Turnaround</th>
+                                            <th>Waiting</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="results-tbody">
+                                        <!-- Populated by JS -->
+                                        <tr>
+                                            <td colspan="6"
+                                                style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+                                                No data available</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- BANKERS MODULE -->
+            <div id="bankers-module" class="sim-module-section">
+                <div class="simulator-layout">
+                    <!-- Controls -->
+                    <div class="sim-controls">
+                        <h3><i class="fas fa-shield-alt" style="color: var(--accent-pink);"></i>
+                            Banker's Algorithm</h3>
+                        <div class="form-group">
+                            <label>System Setup</label>
+                            <div style="display: flex; gap: 1rem;">
+                                <div style="flex: 1;">
+                                    <label for="num-processes" style="font-size: 0.75rem;">No. of
+                                        Processes</label>
+                                    <input type="number" id="num-processes" class="form-control" value="5" min="1"
+                                        max="10" onchange="generateBankersTables()">
+                                </div>
+                                <div style="flex: 1;">
+                                    <label for="num-resources" style="font-size: 0.75rem;">No. of
+                                        Resources</label>
+                                    <input type="number" id="num-resources" class="form-control" value="3" min="1"
+                                        max="5" onchange="generateBankersTables()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 2rem;">
+                            <label>Allocation & Max Matrices</label>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                                Configure the current state and maximum requirements.</p>
+                            <div id="bankers-tables-container" style="overflow-x: auto;">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 2rem;">
+                            <label>Total System Resources</label>
+                            <div id="total-resources-container" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                        <button class="btn-simulate" onclick="runBankersSimulation()"
+                            style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); margin-top: 1.5rem;">
+                            <i class="fas fa-play"></i> Run Safety Algorithm
+                        </button>
+                    </div>
+                    <!-- Visualization -->
+                    <div class="sim-visualization">
+                        <h3>Deadlock Analysis Results</h3>
+                        <p class="desc">Evaluating if the current state is safe and calculating the
+                            Need Matrix.</p>
+
+                        <div id="bankers-result-box"
+                            style="padding: 2rem; border-radius: 16px; background: rgba(255,255,255,0.4); border: 1px solid var(--glass-border); text-align: center; margin-bottom: 2rem; transition: all 0.3s ease;">
+                            <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;" id="safety-status">
+                                Ready to Analyze</div>
+                            <div id="safe-sequence"
+                                style="font-family: 'Space Mono', monospace; color: var(--accent-blue); font-size: 1.2rem;">
+                                -</div>
+                        </div>
+
+                        <h4>Calculated Need Matrix</h4>
+                        <div id="need-matrix-container"
+                            style="overflow-x: auto; margin-top: 1rem; background: rgba(255,255,255,0.4); border: 1px solid var(--glass-border); padding: 1.5rem; border-radius: 12px;">
+                            <div style="text-align: center; color: var(--text-secondary); font-style: italic;">
+                                Run simulation to calculate...</div>
+                        </div>
+
+                        <h4 style="margin-top: 2.5rem;">Resource Allocation Trace</h4>
+                        <div id="available-sequence-container"
+                            style="overflow-x: auto; margin-top: 1rem; background: rgba(255,255,255,0.4); border: 1px solid var(--glass-border); padding: 1.5rem; border-radius: 12px;">
+                            <div style="text-align: center; color: var(--text-secondary); font-style: italic;">
+                                Trace will appear here...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MEMORY ALLOCATION MODULE -->
+            <div id="memory-module" class="sim-module-section">
+                <div class="simulator-layout">
+                    <!-- Controls -->
+                    <div class="sim-controls">
+                        <h3><i class="fas fa-memory" style="color: var(--accent-green);"></i> Memory Allocation</h3>
+                        <div class="form-group">
+                            <label for="mem-algorithm">Allocation Algorithm</label>
+                            <select id="mem-algorithm" class="form-control">
+                                <option value="first">First Fit</option>
+                                <option value="best">Best Fit</option>
+                                <option value="worst">Worst Fit</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mem-blocks">Memory Blocks (comma-separated sizes)</label>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                                E.g. 100, 500, 200, 300, 600</p>
+                            <input type="text" id="mem-blocks" class="form-control" value="100, 500, 200, 300, 600">
+                        </div>
+
+                        <div class="form-group" style="margin-top: 1rem;">
+                            <label for="mem-processes">Processes (comma-separated sizes)</label>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                                E.g. 212, 417, 112, 426</p>
+                            <input type="text" id="mem-processes" class="form-control" value="212, 417, 112, 426">
+                        </div>
+
+                        <button class="btn-simulate" onclick="runMemSimulation()"
+                            style="background: linear-gradient(135deg, var(--accent-green), var(--accent-blue)); margin-top: 1.5rem;">
+                            <i class="fas fa-play"></i> Run Allocation
+                        </button>
+
+                        <div class="metrics-grid" style="margin-top: 2rem;">
+                            <div class="metric-card">
+                                <div class="metric-value" id="int-frag" style="color: var(--accent-pink);">-</div>
+                                <div class="metric-label">Internal Fragmentation</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Visualization -->
+                    <div class="sim-visualization">
+                        <h3>Memory Block Utilization</h3>
+                        <p class="desc">Visualizing how processes are loaded into available physical memory blocks.</p>
+
+                        <div
+                            style="background: rgba(255,255,255,0.4); border: 1px solid var(--glass-border); padding: 2rem; border-radius: 12px;">
+                            <h4
+                                style="margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase;">
+                                Physical Memory State</h4>
+
+                            <div id="memory-visualization-container" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <div
+                                    style="padding: 2rem; text-align: center; color: var(--text-secondary); width: 100%;">
+                                    Run simulation to view memory blocks
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 2.5rem;">
+                            <h4>Process Allocation Log</h4>
+                            <div
+                                style="overflow-x: auto; margin-top: 1rem; background: rgba(255,255,255,0.4); border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); padding: 1rem;">
+                                <table class="process-table" id="mem-results-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Process No.</th>
+                                            <th>Process Size</th>
+                                            <th>Block No.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="mem-results-tbody">
+                                        <tr>
+                                            <td colspan="3"
+                                                style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+                                                No data available</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROCESS SYNCHRONIZATION MODULE -->
+            <div id="sync-module" class="sim-module-section">
+                <div class="simulator-layout">
+                    <!-- Controls -->
+                    <div class="sim-controls">
+                        <h3><i class="fas fa-handshake" style="color: var(--accent-purple);"></i> Process Sync</h3>
+                        <p class="desc" style="margin-bottom: 1.5rem;">Simulate classic synchronization problems using
+                            Semaphores and Mutex locks.</p>
+
+                        <div class="form-group">
+                            <label for="sync-problem">Synchronization Problem</label>
+                            <select id="sync-problem" class="form-control">
+                                <option value="producer_consumer">Producer-Consumer</option>
+                                <option value="readers_writers">Readers-Writers</option>
+                                <option value="dining_philosophers">Dining Philosophers</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sync-entities">Number of Entities</label>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                                (e.g. 5 Philosophers or 3 Producers/3 Consumers)</p>
+                            <input type="number" id="sync-entities" class="form-control" value="5" min="2" max="10">
+                        </div>
+
+                        <button class="btn-simulate" onclick="runSyncSimulation()"
+                            style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink)); margin-top: 1.5rem;">
+                            <i class="fas fa-play"></i> Start Simulation
+                        </button>
+
+                        <div class="metrics-grid" style="margin-top: 2rem;">
+                            <div class="metric-card">
+                                <div class="metric-value" id="sync-status" style="color: var(--accent-green);">Idle
+                                </div>
+                                <div class="metric-label">System Status</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Visualization -->
+                    <div class="sim-visualization">
+                        <h3>Execution Trace & State</h3>
+                        <p class="desc">Real-time terminal view of thread execution, locks, and critical sections.</p>
+
+                        <div id="sync-terminal"
+                            style="background: #f8fafc; border: 1px solid var(--glass-border); border-radius: 12px; padding: 1.5rem; height: 350px; overflow-y: auto; font-family: 'Space Mono', monospace; font-size: 0.9rem; color: #475569;">
+                            <span style="color: #6366f1;">admin@talensync</span>:<span
+                                style="color: #10b981;">~/sync</span>$ ./start_sim<br><br>
+                            Ready to begin synchronization simulation.
+                        </div>
+
+                        <div style="margin-top: 2rem;">
+                            <h4
+                                style="margin-bottom: 1rem; color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase;">
+                                Entity State Visualizer</h4>
+                            <div id="sync-visualizer"
+                                style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; background: rgba(255,255,255,0.4); padding: 2rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+                                <div style="color: var(--text-secondary); font-style: italic;">Visualizer will render
+                                    here...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FILE SYSTEMS MODULE -->
+            <div id="filesystem-module" class="sim-module-section">
+                <div class="simulator-layout">
+                    <!-- Controls -->
+                    <div class="sim-controls">
+                        <h3><i class="fas fa-folder-open" style="color: var(--accent-pink);"></i> File Allocation</h3>
+                        <p class="desc" style="margin-bottom: 1.5rem;">Visualize how files are mapped onto disk blocks.
+                        </p>
+
+                        <div class="form-group">
+                            <label for="fs-algorithm">Allocation Method</label>
+                            <select id="fs-algorithm" class="form-control">
+                                <option value="contiguous">Contiguous Allocation</option>
+                                <option value="linked">Linked Allocation</option>
+                                <option value="indexed">Indexed Allocation</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fs-disk-size">Total Disk Blocks</label>
+                            <input type="number" id="fs-disk-size" class="form-control" value="50" min="10" max="100">
+                        </div>
+
+                        <div class="form-group" style="margin-top: 1rem;">
+                            <label for="fs-files">Files (name:size separated by comma)</label>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                                E.g. FileA:4, FileB:2, FileC:6</p>
+                            <input type="text" id="fs-files" class="form-control"
+                                value="FileA:4, FileB:2, FileC:6, FileD:3">
+                        </div>
+
+                        <button class="btn-simulate" onclick="runFSSimulation()"
+                            style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); margin-top: 1.5rem;">
+                            <i class="fas fa-play"></i> Map Files
+                        </button>
+
+                        <div class="metrics-grid" style="margin-top: 2rem;">
+                            <div class="metric-card">
+                                <div class="metric-value" id="fs-free-blocks" style="color: var(--accent-green);"></div>
+                                <div class="metric-label">Free Blocks Left</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Visualization -->
+                    <div class="sim-visualization">
+                        <h3>Disk Block Map</h3>
+                        <p class="desc">A grid mapping of all blocks on the disk.</p>
+
+                        <div
+                            style="background: rgba(255,255,255,0.4); border: 1px solid var(--glass-border); padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+                            <div id="fs-disk-grid"
+                                style="display: grid; grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); gap: 4px;">
+                                <div
+                                    style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); padding: 2rem;">
+                                    Run to initialize disk map
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4>File Allocation Table (FAT)</h4>
+                        <div
+                            style="overflow-x: auto; margin-top: 1rem; background: rgba(255,255,255,0.4); border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); padding: 1rem;">
+                            <table class="process-table" id="fs-fat-table">
+                                <thead>
+                                    <tr>
+                                        <th>File Name</th>
+                                        <th>Start Block / Index Block</th>
+                                        <th>Allocated Blocks (Map)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="fs-fat-tbody">
+                                    <tr>
+                                        <td colspan="3"
+                                            style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+                                            No data available</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
     <section class="tech-stack-section">
         <h2 class="section-title">Powered By</h2>
         <div class="tech-container">
@@ -127,6 +668,17 @@
         </div>
     </footer>
 
+    <script src="simulator.js"></script>
     <script src="script.js"></script>
+    <script>
+        function switchSimTab(tabId) {
+            document.querySelectorAll('.sim-tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            document.querySelectorAll('.sim-module-section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(`${tabId}-module`).classList.add('active');
+        }
+    </script>
 </body>
+
 </html>
