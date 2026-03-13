@@ -60,10 +60,35 @@ function initChart() {
                     ticks: { color: '#a1a1aa' }
                 },
                 y: {
-                    title: { display: true, text: 'Time / Step', color: '#475569', font: { size: 13 } },
-                    grid: { color: 'rgba(0, 0, 0, 0.05)' },
-                    ticks: { color: '#a1a1aa' },
                     reverse: true // Start from top and go down
+                }
+            },
+            animation: {
+                x: {
+                    type: 'number',
+                    easing: 'linear',
+                    duration: 1500,
+                    from: NaN, // the point is initially skipped
+                    delay(ctx) {
+                        if (ctx.type !== 'data' || ctx.xStarted) {
+                            return 0;
+                        }
+                        ctx.xStarted = true;
+                        return ctx.index * 150; // stagger line draw
+                    }
+                },
+                y: {
+                    type: 'number',
+                    easing: 'linear',
+                    duration: 1500,
+                    from: (ctx) => { return ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y; },
+                    delay(ctx) {
+                        if (ctx.type !== 'data' || ctx.yStarted) {
+                            return 0;
+                        }
+                        ctx.yStarted = true;
+                        return ctx.index * 150;
+                    }
                 }
             }
         }
@@ -888,7 +913,10 @@ function renderGanttChart(gantt) {
 
         // Flex basis roughly based on time passed
         const percent = ((block.end - block.start) / totalTime) * 100;
-        div.style.width = Math.max(percent, 5) + '%';
+        
+        // Use custom property for animation keyframes
+        div.style.setProperty('--target-width', Math.max(percent, 5) + '%');
+        div.classList.add('gantt-block-anim'); // Add animation class
 
         let bgStyle = '';
         if (block.id !== 'IDLE') {
@@ -1120,7 +1148,8 @@ function renderMemResults(processes, allocation, originalBlocks, remBlocks) {
             <div style="font-size: 0.8rem; color: var(--text-secondary);">${originalBlocks[j]} KB Total</div>
         `;
         blockWrapper.innerHTML = physicalBlock;
-        blockWrapper.innerHTML = physicalBlock;
+        blockWrapper.classList.add('mem-block-anim'); // Add staggering class
+        blockWrapper.style.animationDelay = `${j * 0.15}s`; // Sequential stagger
         container.appendChild(blockWrapper);
     }
 }
@@ -1139,6 +1168,9 @@ function runSyncSimulation() {
 
     terminal.innerHTML = `<span style="color: #6366f1;">admin@talensync</span>:<span style="color: #10b981;">~/sync</span>$ ./start_sim --type ${problem} --entities ${numEntities}<br><br>`;
     visualizer.innerHTML = '';
+    
+    // Start pulsing animation
+    visualizer.classList.add('sync-pulse');
     statusBox.innerText = "Running...";
     statusBox.style.color = "var(--accent-pink)";
 
@@ -1237,6 +1269,8 @@ function runSyncSimulation() {
         statusBox.innerText = "Completed";
         statusBox.style.color = "var(--accent-green)";
         visualizer.innerHTML = stateHtml;
+        // Stop pulsing animation when complete
+        visualizer.classList.remove('sync-pulse');
     }, delay + 200);
 }
 
@@ -1385,6 +1419,10 @@ function renderFSMaps(disk, fat) {
         div.style.borderRadius = '4px';
         div.style.fontWeight = 'bold';
         div.title = `Block ${idx}: ${val === -1 ? 'Free' : val}`;
+        
+        // Add sweep animation class and stagger delay based on index
+        div.classList.add('fs-block-anim');
+        div.style.animationDelay = `${idx * 0.05}s`;
 
         if (val === -1) {
             div.style.background = 'rgba(0,0,0,0.05)';
