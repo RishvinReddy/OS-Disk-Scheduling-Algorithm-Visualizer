@@ -6,7 +6,6 @@
    ██║   ██╔══██║██║     ██╔══╝  ██║╚██╗██║╚════██║  ╚██╔╝  ██║╚██╗██║██║
    ██║   ██║  ██║███████╗███████╗██║ ╚████║███████║   ██║   ██║ ╚████║╚██████╗
    ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═══╝ ╚═════╝
-                      OS  SIMULATION  ENGINE  v2.0
 ```
 
 **A comprehensive, interactive Operating Systems simulation & visualization suite**
